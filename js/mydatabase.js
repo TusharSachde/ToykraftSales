@@ -18,7 +18,7 @@ db.transaction(function (tx) {
 console.log("ABHAY RISHI OMKAR");
 
 var mydatabase = angular.module('mydatabase', [])
-    .factory('MyDatabase', function ($http, $location, $cordovaNetwork, MyServices, $cordovaToast) {
+    .factory('MyDatabase', function ($http, $location, $cordovaNetwork, MyServices) {
 
         var statedata = [];
         var checkstatedata = [];
@@ -113,7 +113,7 @@ var mydatabase = angular.module('mydatabase', [])
                             console.log("RAOW INSERTED");
                         }, null);
                     };
-                    $cordovaToast.show('States Data Imported', 'long', 'bottom');
+                    //$cordovaToast.show('States Data Imported', 'long', 'bottom');
                 });
             },
             syncinretailercitydata: function () {
@@ -130,7 +130,7 @@ var mydatabase = angular.module('mydatabase', [])
                             console.log("RAOW INSERTED");
                         }, null);
                     };
-                    $cordovaToast.show('City Data Imported', 'long', 'bottom');
+                    //$cordovaToast.show('City Data Imported', 'long', 'bottom');
                 });
             },
             updatecitydata: function (data) {
@@ -158,7 +158,7 @@ var mydatabase = angular.module('mydatabase', [])
                             console.log("RAOW INSERTED");
                         }, null);
                     };
-                    $cordovaToast.show('Area Data Imported', 'long', 'bottom');
+                    //$cordovaToast.show('Area Data Imported', 'long', 'bottom');
                 });
             },
             syncinretailerdata: function () {
@@ -180,7 +180,7 @@ var mydatabase = angular.module('mydatabase', [])
                             console.log("RAOW NOT INSERTED");
                         });
                     };
-                    $cordovaToast.show('Retailer Data Imported', 'long', 'bottom');
+                    //$cordovaToast.show('Retailer Data Imported', 'long', 'bottom');
                 });
             },
             syncinproductdata: function () {
@@ -199,7 +199,7 @@ var mydatabase = angular.module('mydatabase', [])
                             console.log("PRODUCT RAOW NOT INSERTED");
                         });
                     };
-                    $cordovaToast.show('Product Data Imported', 'long', 'bottom');
+                    //$cordovaToast.show('Product Data Imported', 'long', 'bottom');
                 });
             },
             inserttopten: function (data) {
@@ -214,14 +214,14 @@ var mydatabase = angular.module('mydatabase', [])
                             console.log("TOP TEN NOT INSERTED");
                         });
                     };
-                    $cordovaToast.show('Top Ten Data Imported', 'long', 'bottom');
+                    //$cordovaToast.show('Top Ten Data Imported', 'long', 'bottom');
                 });
             },
             synccategorydata: function (data) {
                 $.jStorage.set("categoriesdata", data);
                 console.log(data);
                 categorydata = data;
-                $cordovaToast.show('Categories Imported', 'long', 'bottom');
+                //$cordovaToast.show('Categories Imported', 'long', 'bottom');
             },
             getcategoriesoffline: function () {
                 return categorydata;
@@ -268,7 +268,7 @@ var mydatabase = angular.module('mydatabase', [])
                                 console.log('did not add product with name' + ocart.name);
                             });
                         };
-                        $cordovaToast.show('Order Placed Offline', 'long', 'bottom');
+                        //$cordovaToast.show('Order Placed Offline', 'long', 'bottom');
                     };
                 });
             },

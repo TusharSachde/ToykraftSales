@@ -336,10 +336,10 @@ angular.module('starter.controllers', ['ngCordova', 'myservices', 'mydatabase', 
 
 })
 
-.controller('StateCtrl', function ($scope, $stateParams, $http, MyServices, MyDatabase, $ionicLoading, $cordovaNetwork) {
+.controller('StateCtrl', function ($scope, $stateParams, $http, MyServices, MyDatabase, $ionicLoading /*,$cordovaNetwork*/) {
     //GET OFFLINE MODE VALUE
-    var offline = MyServices.getmode();
-
+    var offline = true;
+    zoneID = 1;
     var zoneID = $stateParams.id;
     $scope.statedata = [];
 
@@ -349,15 +349,15 @@ angular.module('starter.controllers', ['ngCordova', 'myservices', 'mydatabase', 
     };
 
     //CHECK IF INTERNET IS CONNECTED
-    $scope.type = $cordovaNetwork.getNetwork();
-    var isOnline = $cordovaNetwork.isOnline();
-    offline = !(isOnline);
-    alert(isOnline);
+    //$scope.type = $cordovaNetwork.getNetwork();
+    //var isOnline = $cordovaNetwork.isOnline();
+    //offline = !(isOnline);
+    //alert(isOnline);
     //IF NO INTERNET THEN
     if (offline) {
         alert("your in offline mode");
         db.transaction(function (tx) {
-            var sqls = 'SELECT * FROM STATE WHERE "zone" = "' + zoneID + '"';
+            var sqls = 'SELECT * FROM STATE WHERE "zone" = "1"';
             tx.executeSql(sqls, [], function (tx, results) {
                 var length = results.rows.length;
                 for (var i = 0; i < length; i++) {
@@ -374,7 +374,7 @@ angular.module('starter.controllers', ['ngCordova', 'myservices', 'mydatabase', 
     };
 })
 
-.controller('CityCtrl', function ($scope, $stateParams, $http, MyServices, $ionicLoading, $cordovaNetwork) {
+.controller('CityCtrl', function ($scope, $stateParams, $http, MyServices, $ionicLoading/*, $cordovaNetwork*/) {
     //GET OFFLINE MODE VALUE
     var offline = MyServices.getmode();
 
@@ -450,11 +450,11 @@ angular.module('starter.controllers', ['ngCordova', 'myservices', 'mydatabase', 
     };
 })
 
-.controller('RetailerCtrl', function ($scope, $stateParams, $http, MyServices, $location, $ionicLoading, $cordovaNetwork) {
+.controller('RetailerCtrl', function ($scope, $stateParams, $http, MyServices, $location, $ionicLoading/*, $cordovaNetwork*/) {
     //GET OFFLINE MODE VALUE
-    var offline = MyServices.getmode();
+    var offline = true;
 
-    var areaID = $stateParams.id;
+   /* var areaID = $stateParams.id;
     $scope.areaid = areaID;
 
     console.log(MyServices.setareaid(areaID));
@@ -469,7 +469,7 @@ angular.module('starter.controllers', ['ngCordova', 'myservices', 'mydatabase', 
     $scope.type = $cordovaNetwork.getNetwork();
     var isOnline = $cordovaNetwork.isOnline();
     offline = !(isOnline);
-    alert(isOnline);
+    alert(isOnline);*/
     //IF NO INTERNET THEN
     if (offline) {
         alert("your in offline mode");
@@ -491,9 +491,9 @@ angular.module('starter.controllers', ['ngCordova', 'myservices', 'mydatabase', 
     };
 })
 
-.controller('DealerCtrl', function ($scope, $stateParams, $http, MyServices, MyDatabase, $location, $ionicModal, $window, $ionicLoading, $cordovaNetwork) {
+.controller('DealerCtrl', function ($scope, $stateParams, $http, MyServices, MyDatabase, $location, $ionicModal, $window, $ionicLoading/*, $cordovaNetwork*/) {
     //GET OFFLINE MODE VALUE
-    var offline = MyServices.getmode();
+    var offline = true;
     //CHECK IF INTERNET IS CONNECTED
     /*$scope.type = $cordovaNetwork.getNetwork();
     var isOnline = $cordovaNetwork.isOnline();
@@ -557,6 +557,7 @@ angular.module('starter.controllers', ['ngCordova', 'myservices', 'mydatabase', 
     //GAINING RETAILER INFORMATION - OFFLINE//
     var getretailerdataoffline = function () {
         db.transaction(function (tx) {
+            console.log("offline retailer");
             var sqls = 'SELECT * FROM RETAILER WHERE "id" = "' + $scope.retailerid + '"';
             tx.executeSql(sqls, [], function (tx, results) {
                 var length = results.rows.length;
