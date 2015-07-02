@@ -1,4 +1,4 @@
-var adminurl = "http://admin.toy-kraft.com/rest/index.php/";
+var adminurl = "http://www.toy-kraft.com/NetworkBackend/rest/index.php/";
 var myservices = angular.module('myservices', [])
 
 .factory('MyServices', function ($http, $location) {
